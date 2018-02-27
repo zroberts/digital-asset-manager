@@ -4,7 +4,9 @@
   "description": "A digital Asset manager, CS 420, Spring 2018",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "rebuild": "electron-rebuild"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/zroberts/digital-asset-manager/issues"
   },
-  "homepage": "https://github.com/zroberts/digital-asset-manager#readme"
+  "homepage": "https://github.com/zroberts/digital-asset-manager#readme",
+  "dependencies": {
+    "electron": "^1.8.2",
+    "electron-rebuild": "^1.7.3",
+    "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
+    "less": "^3.0.1"
+  }
 }
