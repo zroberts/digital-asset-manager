@@ -1,0 +1,19 @@
+{
+  "name": "digital-asset-manager",
+  "version": "1.0.0",
+  "description": "A digital Asset manager, CS 420, Spring 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zroberts/digital-asset-manager.git"
+  },
+  "author": "Zachary Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zroberts/digital-asset-manager/issues"
+  },
+  "homepage": "https://github.com/zroberts/digital-asset-manager#readme"
+}
