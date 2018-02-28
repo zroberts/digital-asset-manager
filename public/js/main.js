@@ -9,30 +9,9 @@ start_path = start_path.replace(/\\/g, '/') + '/';
 console.log(start_path);
 files = [];
 files = fetchDirectory(start_path);
+buildDirectory(files);
 
-if(files.length > 1 ){ 
-	files.forEach(fileObject => {
-		stringBuilder = "<div class=\"item\">";
-		fileType;
-		if(fileObject.directory){
-			stringBuilder += icoStringBuilder("folder");
-			fileType = "folder";
-		}else if(fileObject.alias){
-			stringBuilder += icoStringBuilder("alias");
-			fileType = "alias";
-		}else{
-			stringBuilder += icoStringBuilder("file");
-			fileType = fileType.mimeType;
-		}
-		fnStringBuilder(file, fileType);
 
-		
-		stringBuilder += "</div>";
-		$('.file-container').append(stringBuilder);
-	});
-}else{
-	console.log("files is empty: " + array.length);
-}
 
 
 
@@ -43,6 +22,29 @@ function icoStringBuilder(a){
 
 function fnStringBuilder(a, b){
 	return  "<div class=\"fn\"><a href=\"\" data-type=\""+ b +"\">"+ a + "</a></div>";
+}
+function buildDirectory(_thePath){
+	if(_thePath.length > 1 ){ 
+		_thePath.forEach(fileObject => {
+			stringBuilder = "<div class=\"item\">";
+			fileType = "";
+			if(fileObject.directory){
+				stringBuilder += icoStringBuilder("folder");
+				fileType = "folder";
+			}else if(fileObject.alias){
+				stringBuilder += icoStringBuilder("alias");
+				fileType = "alias";
+			}else{
+				stringBuilder += icoStringBuilder("file");
+				fileType = fileType.mimeType;
+			}
+			stringBuilder += fnStringBuilder(fileObject.theFile, fileType);
+			stringBuilder += "</div>";
+			$('.file-container').append(stringBuilder);
+		});
+	}else{
+		console.log("files is empty: " + array.length);
+	}
 }
 function fetchDirectory(_thePath){
 	arr = [];
