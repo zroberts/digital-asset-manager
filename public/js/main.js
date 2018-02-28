@@ -7,11 +7,32 @@ var $ = require("jquery");
 
 start_path = start_path.replace(/\\/g, '/') + '/';
 console.log(start_path);
+files = [];
+files = fetchDirectory(start_path);
 
-files = fetchDirecty(_thePath);
-files.forEach(file => {
+if(files.length > 1 ){ 
+	files.forEach(fileObject => {
+		stringBuilder = "<div class=\"item\">";
+		fileType;
+		if(fileObject.directory){
+			stringBuilder += icoStringBuilder("folder");
+			fileType = "folder";
+		}else if(fileObject.alias){
+			stringBuilder += icoStringBuilder("alias");
+			fileType = "alias";
+		}else{
+			stringBuilder += icoStringBuilder("file");
+			fileType = fileType.mimeType;
+		}
+		fnStringBuilder(file, fileType);
 
-});
+		
+		stringBuilder += "</div>";
+		$('.file-container').append(stringBuilder);
+	});
+}else{
+	console.log("files is empty: " + array.length);
+}
 
 
 
@@ -25,28 +46,25 @@ function fnStringBuilder(a, b){
 }
 function fetchDirectory(_thePath){
 	arr = [];
-	fs.readdir(_thaPath, (err, files) => {
-		if(err){
-			console.log(err);
-		}
-		files.forEach(file => {
-			arr.push({
-				path: _thePath,
-				theFile: file,
-				directory: fs.statSync(_thePath + file).isDirectory(),
-				alias: fs.statSync(_thePath + file).isSymbolicLink(),
-				mimeType: mime.getType(file);
-			});
+	files = fs.readdirSync(_thePath)
+		
+	files.forEach(file => {
+		arr.push({
+			path: _thePath,
+			theFile: file,
+			directory: fs.statSync(_thePath + file).isDirectory(),
+			alias: fs.statSync(_thePath + file).isSymbolicLink(),
+			mimeType: mime.getType(file)
 		});
-		return arr;
 	});
+	return arr;
 }
-function getStats(_inFile, _thePath){
+/*function getStats(_inFile, _thePath){
 	files.forEach(file =>{
 			
 			arrayOffiles += file;
 			/*stringBuilder += icoStringBuilder("file");
-			stringBuilder += fnStringBuilder(file, "file");*/
+			stringBuilder += fnStringBuilder(file, "file");
 			
 			fs.stat(start_path + file, (err, stats) => {
 				stringBuilder = "<div class=\"fileitem\">";
@@ -69,4 +87,4 @@ function getStats(_inFile, _thePath){
 			});
 			
 		});
-}
+}*/
