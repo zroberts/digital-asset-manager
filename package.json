@@ -23,6 +23,7 @@
     "electron-rebuild": "^1.7.3",
     "fs": "0.0.1-security",
     "jquery": "^3.3.1",
-    "less": "^3.0.1"
+    "less": "^3.0.1",
+    "mime": "^2.2.0"
   }
 }
