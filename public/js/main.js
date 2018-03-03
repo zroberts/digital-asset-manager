@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const mime = require('mime');
 const os = require('os');
@@ -6,9 +5,29 @@ const $ = require("jquery");
 
 let start_path = os.homedir() + "/Desktop";
 start_path = start_path.replace(/\\/g, '/') + '/';
-
 buildDirectory(start_path);
 
+
+$('#up').click(function(){
+	let upPathArr = $('#directory').val().split("/");
+	let upPath = "";
+	for(i = 0; i < (upPathArr.length - 2); i++){
+		upPath += upPathArr[i] + "/";
+	}
+	//console.log(upPath);
+	try{
+		buildDirectory(upPath);
+	}catch(err){
+		switch(err){
+			case "Error: EPERM: operation not permitted, stat 'C:\\Users\\SSHD'":
+				alert("Insufficient Permissions to browse to that directory");
+				break;
+			default:
+				alert(err);
+				console.log(err);
+		}
+	}
+});
 
 function doubleClickFunction(_theItem){
 	console.log(_theItem);
@@ -17,13 +36,7 @@ function doubleClickFunction(_theItem){
 	}else{
 		console.log("it's a file!");
 	}
-	/*if($(this).attr("data-type") == "folder"){
-		console.log("A Folder!");
-	}else{
-		console.log("not a folder....");
-	}*/
 }
-
 function fnStringBuilder(a, b){
 	return  `<div class="file" data-type="${b}" ondblclick="doubleClickFunction('${a.path}${a.theFile}${a.directory ? '/':'' }')"><i class="ico ${b}" data-type="${b}"><img src="assets/icons/${b}.png" alt="${b}" /></i>${a.theFile}</div>`;
 }
@@ -81,5 +94,6 @@ function fetchDirectory(_thePath){
 			});
 		}
 	});
+	$('#directory').val(_thePath);
 	return folderArr.concat(fileArr);
 }
