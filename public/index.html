@@ -2,20 +2,48 @@
  	<script></script>
 	<header>
 		<style>
+			body{
+				overflow-x: hidden;
+			}
+			body.noScroll{
+				overflow-y: hidden;
+			}
 			.file-container .file:hover{
 				cursor: pointer;
+			}
+			.file-container .file.active{
+				background-color: #ccc;
+			}
+			.file-information{
+				display: block;
+				position: fixed;
+				height: 100%;
+				width: 50%;
+				background-color: #fff;
+				box-shadow: 0 0 25px rgba(0,0,0,0);
+				top: 0;
+				left: 100%;
+			}
+			.file-information.active{
+				left: 50%;
+				box-shadow: 0 0 25px rgba(0,0,0,75);
 			}
 		</style>
 	</header>
 	<body>
 		<div class="navigation">
 			<button class="up" id="up">Up</button>
-			<input type="text" id="directory" />
+			<input type="text" id="directory" data-current="" />
 			<button id="go">Go</button>
+			<button id="filter">Filter</button>
 		</div>
 		<div class="file-container">	
-			
 		</div>	
+		<div class="file-information">
+			<a href="#" id="close">Close</a>
+			<div class="file-content"></div>
+			<div class="filter-options"></div>
+		</div>
 	</body>
 	<script type="text/javascript" src="js/main.js"></script>
 </html>

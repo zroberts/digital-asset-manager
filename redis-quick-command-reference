@@ -1,0 +1,21 @@
+flushall == delete everything
+
+keys * == returns all keys
+
+sadd == add to set
+
+smembers key == get all values in that key set
+
+sunion [array_of_keys] ==  the union of these sets
+sinter [array_of_keys] == the intersection of these sets
+sdiff [array_of_keys]  == the difference of these sets
+
+
+example = {
+	tag1: true,
+	tag2: false,
+	tag3: true
+}
+example.tag4  = true;
+
+if(example.hasOwnProperty('tag4')) // should be true!
