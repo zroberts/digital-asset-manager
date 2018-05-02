@@ -28,17 +28,23 @@
 				left: 50%;
 				box-shadow: 0 0 25px rgba(0,0,0,75);
 			}
+			.context-menu{
+				display: block;
+				position: absolute;
+				-webkit-box-shadow: 0 0 5px rbga(0,0,0,.3);
+				box-shadow: 		0 0 5px rbga(0,0,0,.3);
+			}
 		</style>
 	</header>
 	<body>
+		<div class="context-menu"></div>
 		<div class="navigation">
 			<button class="up" id="up">Up</button>
 			<input type="text" id="directory" data-current="" />
 			<button id="go">Go</button>
 			<button id="filter">Filter</button>
 		</div>
-		<div class="file-container">	
-		</div>	
+		<div class="file-container"></div>	
 		<div class="file-information">
 			<a href="#" id="close">Close</a>
 			<div class="file-content"></div>

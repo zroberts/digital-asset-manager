@@ -4,6 +4,7 @@ const {shell} = require('electron');
 const fileSystem = require('./js/fileSystem.js');
 const redisWorker = require('./js/redis.js');
 const filterWorker = require('./js/filterBuilder.js');
+const contextMenu = require('./js/contextMenu.js');
 
 let $filters =  $('.file-information .filter-options');
 let $fileInfo = $('.file-information .file-content');
@@ -106,7 +107,6 @@ $('.filter-options').on('change', '#filters .filterType', function(){
 	redisWorker.setFilterType($('#filters input[name=filter-type]:checked').val());
 	runFilter();
 });
-
 function openPathInNav(){
 	let desiredPath = $('#directory').val();
 	console.log("...");
@@ -149,3 +149,16 @@ function runFilter(){
 		});
 	}
 }
+
+// adding in some rightclickiness goodness --
+
+$("body").contextmenu(function(e){
+	contextMenu.openContextMenu(e, this);
+});
+$("div.file").contextmenu(function(e){
+	contextMenu.openContextMenu(e, this);
+});
+$("div.file").contextmenu(function(e){
+	contextMenu.openContextMenu(e, this);
+});
+

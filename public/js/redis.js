@@ -1,7 +1,7 @@
 const Redis = require('ioredis');
 const redis = new Redis({
 	port: 6379,
-	host: '127.0.0.1',
+	host: '206.189.198.101',
 	keyPrefix: 'tag:'
 
 });
