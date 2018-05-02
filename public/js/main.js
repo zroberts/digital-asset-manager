@@ -13,7 +13,7 @@ let $mainContent = $('.file-container');
 
 
 let filterArr = [];
-let start_path = os.homedir() + "/Desktop/chapter2.5";
+let start_path = os.homedir() + "/Desktop/";
 start_path = start_path.replace(/\\/g, '/') + '/';
 
 fileSystem.buildDirectory(start_path);
